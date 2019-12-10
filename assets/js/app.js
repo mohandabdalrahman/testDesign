@@ -18,31 +18,27 @@ $(chk_btn).change(function(e){
 if(e.target.checked){
    count+=1;
     $(save_btn).text(`${count} / selected`)
-    if(count === 3){
-        $(save_btn).prop('disabled', false)
-        $(save_btn).text('Save')
-    }
-    else if(count>3){
-        $(save_btn).prop('disabled', true)
-        $(save_btn).text('You should select 3 welcome tones only').css({
-            color:'red'
-        })
-    }
+    checkCount(count)
 }
 else{
     count -= 1;
     $(save_btn).text(`${count} / selected`)
-    if (count === 3) {
+    checkCount(count)
+}
+})
+
+
+function checkCount(num){
+    if (num === 3) {
         $(save_btn).prop('disabled', false)
         $(save_btn).text('Save').css({
-            color:'black'
+            color: 'black'
         })
     }
-    else if (count > 3) {
+    else if (num > 3) {
         $(save_btn).prop('disabled', true)
         $(save_btn).text('You should select 3 welcome tones only').css({
             color: 'red'
         })
     }
 }
-})
